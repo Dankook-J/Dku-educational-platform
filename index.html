@@ -256,14 +256,15 @@ const data = {
     </ul>`
 };
 
+// [수정 핵심] Mermaid가 전달한 ID의 찌꺼기(-render)를 완벽하게 정제하는 함수구조로 변경
 window.showModal = function(id) {
-    const cleanId = String(id).toLowerCase().trim().substring(0, 4);
+  const cleanId = String(id).toLowerCase().trim().substring(0, 4);
   
   if (data[cleanId]) {
     document.getElementById('modal-content').innerHTML = data[cleanId];
     document.getElementById('modal').style.display = 'block';
   } else {
-      console.error("ID 매칭 실패! 원본:", id, "정제된 ID:", cleanId);
+    console.error("ID 매칭 실패! 원본:", id, "정제된 ID:", cleanId);
   }
 };
 
@@ -278,4 +279,4 @@ window.onclick = function(e) {
 mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
 </script>
 </body>
-</html>
+</html>[B[B
