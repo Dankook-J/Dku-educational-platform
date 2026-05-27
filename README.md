@@ -1,6 +1,8 @@
  🏫 Dku-Educational-Platform
 
 > 고등학교 교육 플랫폼 구성을 위한 요구사항 정의 및 유스케이스 명세서
+> 🚀 **[중요] 유스케이스 다이어그램 노드 클릭 및 상세 명세서 팝업창 테스트는 아래 링크에서 확인하세요!**
+> ### 🔗 [실시간 인터랙티브 요구사항 명세서 바로가기](https://mvp7389-cyber.github.io/Dku-educational-platform/)
 
 ---
 
