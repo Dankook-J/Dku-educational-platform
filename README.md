@@ -13,19 +13,19 @@
 ```mermaid
 graph TD
     subgraph 고등학교 교육 플랫폼
-        StudentC[임수민 하위권] --> C_UC1(FR-01: 학사 일정 및 시간표 동기화)
+        StudentC[임수민 (하위권)] --> C_UC1(FR-01: 학사 일정 및 시간표 동기화)
         StudentC --> C_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
         StudentC --> C_UC3(FR-03: 맞춤형 학습 로드맵 추천)
         StudentC --> C_UC4(FR-04: 취약 단원 시각적 리포트 조회)
         StudentC --> C_UC5(FR-05: 고난도 변형 문제 큐레이션)
 
-        StudentB[이정훈 중위권] --> B_UC1(FR-01: 학사 일정 및 시간표 동기화)
+        StudentB[이정훈 (중위권)] --> B_UC1(FR-01: 학사 일정 및 시간표 동기화)
         StudentB --> B_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
         StudentB --> B_UC3(FR-03: 맞춤형 학습 로드맵 추천)
         StudentB --> B_UC4(FR-04: 취약 단원 시각적 리포트 조회)
         StudentB --> B_UC5(FR-05: 고난도 변형 문제 큐레이션)
 
-        StudentA[안치용 상위권] --> A_UC1(FR-01: 학사 일정 및 시간표 동기화)
+        StudentA[안치용 (상위권)] --> A_UC1(FR-01: 학사 일정 및 시간표 동기화)
         StudentA --> A_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
         StudentA --> A_UC3(FR-03: 맞춤형 학습 로드맵 추천)
         StudentA --> A_UC4(FR-04: 취약 단원 시각적 리포트 조회)
