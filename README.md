@@ -1,4 +1,4 @@
- 🏫 Dku-Educational-Platform
+ 🏫 Dku-Educational-Platform
 
 > 고등학교 교육 플랫폼 구성을 위한 요구사항 정의 및 유스케이스 명세서
 > 🚀 **[중요] 유스케이스 다이어그램 노드 클릭 및 상세 명세서 팝업창 테스트는 아래 링크에서 확인하세요!**
@@ -12,27 +12,41 @@
 
 ```mermaid
 graph TD
-    subgraph 고등학교 교육 플랫폼
-        StudentC[임수민 하위권] --> C_UC1(FR-01: 학사 일정 및 시간표 동기화)
-        StudentC --> C_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
-        StudentC --> C_UC3(FR-03: 맞춤형 학습 로드맵 추천)
-        StudentC --> C_UC4(FR-04: 취약 단원 시각적 리포트 조회)
-        StudentC --> C_UC5(FR-05: 고난도 변형 문제 큐레이션)
+    subgraph 고등학교 교육 플랫폼
+        StudentC[임수민 하위권] --> C_UC1(FR-01: 학사 일정 및 시간표 동기화)
+        StudentC --> C_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
+        StudentC --> C_UC3(FR-03: 맞춤형 학습 로드맵 추천)
+        StudentC --> C_UC4(FR-04: 취약 단원 시각적 리포트 조회)
+        StudentC --> C_UC5(FR-05: 고난도 변형 문제 큐레이션)
 
-        StudentB[이정훈 중위권] --> B_UC1(FR-01: 학사 일정 및 시간표 동기화)
-        StudentB --> B_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
-        StudentB --> B_UC3(FR-03: 맞춤형 학습 로드맵 추천)
-        StudentB --> B_UC4(FR-04: 취약 단원 시각적 리포트 조회)
-        StudentB --> B_UC5(FR-05: 고난도 변형 문제 큐레이션)
+        StudentB[이정훈 중위권] --> B_UC1(FR-01: 학사 일정 및 시간표 동기화)
+        StudentB --> B_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
+        StudentB --> B_UC3(FR-03: 맞춤형 학습 로드맵 추천)
+        StudentB --> B_UC4(FR-04: 취약 단원 시각적 리포트 조회)
+        StudentB --> B_UC5(FR-05: 고난도 변형 문제 큐레이션)
 
-        StudentA[안치용 상위권] --> A_UC1(FR-01: 학사 일정 및 시간표 동기화)
-        StudentA --> A_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
-        StudentA --> A_UC3(FR-03: 맞춤형 학습 로드맵 추천)
-        StudentA --> A_UC4(FR-04: 취약 단원 시각적 리포트 조회)
-        StudentA --> A_UC5(FR-05: 고난도 변형 문제 큐레이션)
-    end
+        StudentA[안치용 상위권] --> A_UC1(FR-01: 학사 일정 및 시간표 동기화)
+        StudentA --> A_UC2(FR-02: 문제 이미지 인식 및 해설 제공)
+        StudentA --> A_UC3(FR-03: 맞춤형 학습 로드맵 추천)
+        StudentA --> A_UC4(FR-04: 취약 단원 시각적 리포트 조회)
+        StudentA --> A_UC5(FR-05: 고난도 변형 문제 큐레이션)
+    end
 
-  
+    click C_UC1 "#fr-01-학사-일정-및-시간표-동기화" "FR-01 상세 보기"
+    click C_UC2 "#fr-02-문제-이미지-인식-및-해설-제공" "FR-02 상세 보기"
+    click C_UC3 "#fr-03-맞춤형-학습-로드맵-추천" "FR-03 상세 보기"
+    click C_UC4 "#fr-04-취약-단원-시각적-리포트-조회" "FR-04 상세 보기"
+    click C_UC5 "#fr-05-고난도-변형-문제-큐레이션" "FR-05 상세 보기"
+    click B_UC1 "#fr-01-학사-일정-및-시간표-동기화" "FR-01 상세 보기"
+    click B_UC2 "#fr-02-문제-이미지-인식-및-해설-제공" "FR-02 상세 보기"
+    click B_UC3 "#fr-03-맞춤형-학습-로드맵-추천" "FR-03 상세 보기"
+    click B_UC4 "#fr-04-취약-단원-시각적-리포트-조회" "FR-04 상세 보기"
+    click B_UC5 "#fr-05-고난도-변형-문제-큐레이션" "FR-05 상세 보기"
+    click A_UC1 "#fr-01-학사-일정-및-시간표-동기화" "FR-01 상세 보기"
+    click A_UC2 "#fr-02-문제-이미지-인식-및-해설-제공" "FR-02 상세 보기"
+    click A_UC3 "#fr-03-맞춤형-학습-로드맵-추천" "FR-03 상세 보기"
+    click A_UC4 "#fr-04-취약-단원-시각적-리포트-조회" "FR-04 상세 보기"
+    click A_UC5 "#fr-05-고난도-변형-문제-큐레이션" "FR-05 상세 보기"
 ```
 
 ---
