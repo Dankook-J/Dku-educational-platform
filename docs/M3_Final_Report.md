@@ -427,9 +427,7 @@
 
 
 ```mermaid
-
 graph LR
-
     subgraph 고등학교_교육_플랫폼 [고등학교 교육 플랫폼 시스템]
 
         direction TB
