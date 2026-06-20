@@ -1,0 +1,42 @@
+# 운영체제 자동 생성 파일
+.DS_Store
+Thumbs.db
+
+# Python 관련
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Node.js 관련
+node_modules/
+
+# Java 관련
+*.class
+*.jar
+target/
+
+# IDE 설정 파일
+.vscode/
+.idea/
+*.suo
+*.user
+
+# 문서 원본 (제출은 .md 파일로 하므로 제외)
+*.pdf
+*.docx
+*.hwp
+*.pptx
+
+# 임시 파일
+*.tmp
+*.log
+
+# 대용량 미디어 및 압축 파일
+*.mp4
+*.mov
+*.avi
+*.psd
+*.ai
+*.zip
+*.rar
