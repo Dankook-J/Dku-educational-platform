@@ -452,7 +452,7 @@ graph LR
     StudentC --> UC4
     StudentC --> UC5
 
-```
+---
 
 
 
