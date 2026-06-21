@@ -390,7 +390,7 @@
 | **GitHub** | 소스코드 버전 관리 및 최종 산출물 통합 | 기능 단위 브랜치 전략을 수행하고, 프로토타입 코드(`class.py`) 및 마크다운 명세서(`README.md`) 최종 통합 시 PM의 상호 코드 리뷰 및 승인 하에 Main 브랜치 병합을 진행함. GitHub Pages 기능을 활성화하여 산출물을 상시 모니터링함. |
 
 
-| **KakaoTalk** | 실시간 소통 및 긴급 빌드 에러 공유 | 데일리 오프라인 스탠드업 대신 단체 대화방 공지와 투표 기능을 활용하여 실시간 개발 이슈, 빌드 오류 발생 현황, Mermaid 문법 오류 등을 신속히 전파하고 즉시 해결 프로세스를 밟음. |
+| **KakaoTalk** | 실시간 소통 및 긴급 빌드 에러 공유 | 오프라인 대신 단체 대화방 공지와 투표 기능을 활용하여 실시간 개발 이슈, 빌드 오류 발생 현황, Mermaid 문법 오류 등을 신속히 전파하고 즉시 해결 프로세스를 밟음. |
 
 
 
@@ -447,9 +447,80 @@ graph LR
     StudentC --> UC3
     StudentC --> UC4
     StudentC --> UC5
+
 ```
+변경없음
 ---
 
+### 7-2. 클래스 다이어그램 (Class Diagram)
+
+classDiagram
+    direction TB
+
+    class DKUEducationalPlatform {
+        +Map LEVELS
+        +Map MENU
+        -WeaknessTracker tracker
+        -FR01_ScheduleService fr01
+        -FR02_ImageService fr02
+        -FR03_RoadmapService fr03
+        -FR04_ReportService fr04
+        -FR05_CurationService fr05
+        +run() Void
+        -print_menu(level) Void
+    }
+
+    class WeaknessTracker {
+        -Map _data
+        +record(student_name, unit) Void
+        +get(student_name) Map
+        +has_data(student_name) bool
+    }
+
+    class FR01_ScheduleService {
+        +Map SCHEDULE_BY_LEVEL
+        +Map TIMETABLE
+        +run(level) Void
+    }
+
+    class FR02_ImageService {
+        +Map MOCK_BY_LEVEL
+        +Map UNIT_MAP
+        +run(level, student_name, tracker) Void
+    }
+
+    class FR03_RoadmapService {
+        +Map ROADMAP_DB
+        +run(level, student_name, tracker) Void
+    }
+
+    class FR04_ReportService {
+        +run(student_name, tracker) Void
+        -bar(score, width) String
+    }
+
+    class FR05_CurationService {
+        +Map CURATION_DB
+        +Map LEVEL_MSG
+        +run(level, student_name, tracker) Void
+    }
+
+    %% 관계선 수정: 플랫폼이 각 서비스를 소유하므로 Composition(합성) 적용
+    DKUEducationalPlatform *-- WeaknessTracker : Contains
+    DKUEducationalPlatform *-- FR01_ScheduleService : Has
+    DKUEducationalPlatform *-- FR02_ImageService : Has
+    DKUEducationalPlatform *-- FR03_RoadmapService : Has
+    DKUEducationalPlatform *-- FR04_ReportService : Has
+    DKUEducationalPlatform *-- FR05_CurationService : Has
+
+    %% 서비스들이 공통 저장소인 Tracker를 참조/참견하므로 Dependency(의존) 적용
+    FR02_ImageService ..> WeaknessTracker : Records Error
+    FR03_RoadmapService ..> WeaknessTracker : Records Weakness
+    FR04_ReportService ..> WeaknessTracker : Reads Data
+    FR05_CurationService ..> WeaknessTracker : Records Result
+---
+변경없음
+---
 
 
 ## 8. 설계 패턴 적용 내역
@@ -484,9 +555,6 @@ graph LR
 
 #### [패턴 적용 전]
 
-*각 서비스 클래스가 성취도 및 오답 데이터를 개별 메모리에 관리하여 데이터 불일치 및 파편화 위험이 높음.*
-
-
 
 ```mermaid
 
@@ -519,8 +587,6 @@ classDiagram
 
 
 #### [패턴 적용 후]
-
-*중앙 집중형 `WeaknessTracker` 인스턴스를 하나만 보장하고, 모든 기능 서비스가 이 단일 인스턴스를 의존성 주입(Dependency Injection) 방식으로 공유 참조함[cite: 3].*
 
 
 
@@ -574,7 +640,7 @@ classDiagram
 
 
 
-### 8-3. 개발자 - 구현 관점 적용 결과[cite: 1]
+### 8-3. 개발자 - 구현 관점 적용 결과
 
 
 
@@ -600,11 +666,11 @@ classDiagram
 
 
 
-*   **품질 영향 (Quality Benefit)**
+*   **품질 영향 **
 
     *   어떤 메뉴(FR-02, FR-03, FR-05)에서 약점 데이터를 입력하더라도 하나의 트래커 파일에 영속적으로 누적되므로, 데이터 정합성 오류로 인한 리포트 출력 불일치 버그를 원천 차단하였습니다.
 
-*   **보안 영향 (Security Benefit)**
+*   **보안 영향 **
 
     *   학생의 이름과 취약 단원 성취도라는 민감한 개인 데이터가 여러 클래스에 분산 저장되지 않고 `WeaknessTracker` 내부의 `_data` 캡슐화 변수 한 곳에서만 관리되므로, 데이터 접근 제어 및 유출 방지를 위한 보안 모니터링 포인트를 단일화했습니다.
 
@@ -618,7 +684,7 @@ classDiagram
 
 
 
-### 9-1. SRP - 단일 책임 원칙 (Single Responsibility Principle)
+### 9-1. SRP - 단일 책임 원칙 
 
 
 
@@ -640,7 +706,7 @@ classDiagram
 
 
 
-### 9-2. OCP - 개방-폐쇄 원칙 (Open-Closed Principle)
+### 9-2. OCP - 개방-폐쇄 원칙 
 
 
 
@@ -662,7 +728,7 @@ classDiagram
 
 
 
-### 9-3. LSP - 리스코프 치환 원칙 (Liskov Substitution Principle)
+### 9-3. LSP - 리스코프 치환 원칙 
 
 
 
@@ -680,7 +746,7 @@ classDiagram
 
 
 
-## 10. 인스펙션 결과 (팀 내 Cross-check)
+## 10. 인스펙션 결과 
 
 
 
@@ -780,7 +846,7 @@ classDiagram
 
 | **총 활용 횟수 (추정)** | 약 45회  | 팀원 전체 개별 AI 로그 집계 합산 기준  |
 
-| **주요 사용 도구** | ChatGPT (GPT-4o), Claude 3.5 Sonnet, Gemini  | 소스코드 구조화 및 데이터 텍스트 정제 목적 |
+| **주요 사용 도구** | Gemini, ChatGPT (GPT-4o), Claude 3.5 Sonnet  | 소스코드 구조화 및 데이터 텍스트 정제 목적 |
 
 | **가장 많이 활용한 단계** | 구현 및 설계 보완 단계 (M2 ~ M3)  | 다이어그램 오류 수정 및 프로토타입 구현 집중 |
 
